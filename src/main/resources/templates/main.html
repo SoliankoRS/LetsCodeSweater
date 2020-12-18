@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Main</title>
+</head>
+<body>
+    <div>
+        <form method="post">
+            <input type="text" name="text" placeholder="Input your message">
+            <input type="text" name="tag" placeholder="Tag">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <div>Filter text</div>
+    <form method="post" action="filter">
+        <input type="text" name="filter">
+        <button type="submit">Find</button>
+    </form>
+    <div>List of messages</div>
+    <div th:each="message : ${messages}">
+        <b th:text="${message.id}"></b>
+        <span th:text="${message.text}"></span>
+        <i th:text="${message.tag}"></i>
+    </div>
+</body>
+</html>
