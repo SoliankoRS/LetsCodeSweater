@@ -1,4 +1,4 @@
-package ru.solianko.letscodesweater;
+package ru.solianko.letscodesweater.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,22 +10,18 @@ import ru.solianko.letscodesweater.domain.Message;
 import ru.solianko.letscodesweater.repos.MessageRepo;
 
 @Controller
-public class GreetingController {
+public class MainController {
 
     @Autowired
     private MessageRepo messageRepo;
 
-    @GetMapping("/greeting")
-    public String greeting(
-            @RequestParam(name = "name", required = false, defaultValue = "World") String name,
-            Model model) {
-
-        model.addAttribute("name", name);
+    @GetMapping("/")
+    public String greeting(Model model) {
 
         return "greeting";
     }
 
-    @GetMapping
+    @GetMapping("/main")
     public String main(Model model) {
 
         Iterable<Message> messages = messageRepo.findAll();
@@ -34,7 +30,7 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping
+    @PostMapping("/main")
     public String add(
             @RequestParam String text,
             @RequestParam String tag,
