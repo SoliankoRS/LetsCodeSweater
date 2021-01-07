@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="parts/common::layout(~{::section})">
+<section>
+    <p>List of users</p>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Role</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <div th:each="user:${users}">
+                <tr>
+                    <td th:text="${user.username}"></td>
+                    <td>
+                        <div th:each="role:${user.roles}">
+                            <span th:text="${role}"></span>
+                        </div>
+                    </td>
+                    <td><a th:href="@{/user/} + ${user.id}">edit</a></td>
+                </tr>
+            </div>
+        </tbody>
+    </table>
+</section>
+</html>

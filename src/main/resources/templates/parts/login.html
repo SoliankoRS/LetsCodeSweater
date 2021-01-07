@@ -7,7 +7,7 @@
 <body>
     <div th:fragment="login(path)">
         <form th:action="${path}" method="post">
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             <div><label>User name : <input type="text" name="username"/></label></div>
             <div><label>Password : <input type="password" name="password"/></label></div>
             <div>
